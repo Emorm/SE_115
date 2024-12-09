@@ -27,7 +27,6 @@ class WayFinder
     private void explore(String currentCity, List<String> visited, int currentTime) {
         visited.add(currentCity);
 
-
         if (currentCity.equals(map.getEndCity()))
         {
             if (currentTime < shortestTime)
