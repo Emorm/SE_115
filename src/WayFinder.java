@@ -1,19 +1,23 @@
 import java.util.*;
 
-class WayFinder {
+class WayFinder
+{
     private CountryMap map;
     private int shortestTime = Integer.MAX_VALUE;
     private String shortestPath = "";
 
-    public WayFinder(CountryMap map) {
+    public WayFinder(CountryMap map)
+    {
         this.map = map;
     }
 
-    public String findFastestRoute() {
+    public String findFastestRoute()
+    {
         List<String> visited = new ArrayList<>();
         explore(map.getStartCity(), visited, 0);
 
-        if (shortestPath.isEmpty()) {
+        if (shortestPath.isEmpty())
+        {
             return "No path exists between " + map.getStartCity() + " and " + map.getEndCity();
         }
 
