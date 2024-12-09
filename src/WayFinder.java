@@ -37,7 +37,6 @@ class WayFinder
         }
         else
         {
-
             for (Route route : map.getRoutes())
             {
                 String neighbor = null;
@@ -48,7 +47,6 @@ class WayFinder
                 {
                     neighbor = route.getCity1();
                 }
-
                 if (neighbor != null)
                 {
                     explore(neighbor, new ArrayList<>(visited), currentTime + route.getTime());

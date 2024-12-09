@@ -26,7 +26,6 @@ class CountryMap {
             map.routes.add(new Route(city1, city2, time));
         }
 
-
         String[] startEnd = br.readLine().split(" ");
         map.startCity = startEnd[0];
         map.endCity = startEnd[1];
