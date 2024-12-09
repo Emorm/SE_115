@@ -24,22 +24,30 @@ class WayFinder {
         visited.add(currentCity);
 
 
-        if (currentCity.equals(map.getEndCity())) {
-            if (currentTime < shortestTime) {
+        if (currentCity.equals(map.getEndCity()))
+        {
+            if (currentTime < shortestTime)
+            {
                 shortestTime = currentTime;
                 shortestPath = String.join(" -> ", visited);
             }
-        } else {
+        }
+        else
+        {
 
-            for (Route route : map.getRoutes()) {
+            for (Route route : map.getRoutes())
+            {
                 String neighbor = null;
-                if (route.getCity1().equals(currentCity) && !visited.contains(route.getCity2())) {
+                if (route.getCity1().equals(currentCity) && !visited.contains(route.getCity2()))
+                {
                     neighbor = route.getCity2();
-                } else if (route.getCity2().equals(currentCity) && !visited.contains(route.getCity1())) {
+                } else if (route.getCity2().equals(currentCity) && !visited.contains(route.getCity1()))
+                {
                     neighbor = route.getCity1();
                 }
 
-                if (neighbor != null) {
+                if (neighbor != null)
+                {
                     explore(neighbor, new ArrayList<>(visited), currentTime + route.getTime());
                 }
             }

@@ -12,14 +12,13 @@ class CountryMap {
         BufferedReader br = new BufferedReader(new FileReader(fileName));
         CountryMap map = new CountryMap();
 
-
         int numCities = Integer.parseInt(br.readLine());
         String[] cityLabels = br.readLine().split(" ");
         map.cities.addAll(Arrays.asList(cityLabels));
 
-
         int numRoutes = Integer.parseInt(br.readLine());
-        for (int i = 0; i < numRoutes; i++) {
+        for (int i = 0; i < numRoutes; i++)
+        {
             String[] routeData = br.readLine().split(" ");
             String city1 = routeData[0];
             String city2 = routeData[1];
@@ -36,19 +35,23 @@ class CountryMap {
         return map;
     }
 
-    public List<String> getCities() {
+    public List<String> getCities()
+    {
         return cities;
     }
 
-    public List<Route> getRoutes() {
+    public List<Route> getRoutes()
+    {
         return routes;
     }
 
-    public String getStartCity() {
+    public String getStartCity()
+    {
         return startCity;
     }
 
-    public String getEndCity() {
+    public String getEndCity()
+    {
         return endCity;
     }
 }
