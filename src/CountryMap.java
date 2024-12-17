@@ -1,56 +1,55 @@
-import java.io.*;
-import java.util.*;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.util.Scanner;
 
 class CountryMap {
-    private List<String> cities = new ArrayList<>();
-    private List<Route> routes = new ArrayList<>();
+    private String[] cities;
+    private Route[] routes;
     private String startCity;
     private String endCity;
 
-    public static CountryMap loadFromFile(String fileName) throws IOException
-    {
-        BufferedReader br = new BufferedReader(new FileReader(fileName));
+    public static CountryMap loadFromFile(Path filePath) throws IOException {
+        Scanner fileScanner = new Scanner(new File(filePath.toString()));
         CountryMap map = new CountryMap();
 
-        int numCities = Integer.parseInt(br.readLine());
-        String[] cityLabels = br.readLine().split(" ");
-        map.cities.addAll(Arrays.asList(cityLabels));
+        // Parse cities
+        int numCities = Integer.parseInt(fileScanner.nextLine());
+        map.cities = fileScanner.nextLine().split(" ");
 
-        int numRoutes = Integer.parseInt(br.readLine());
-        for (int i = 0; i < numRoutes; i++)
-        {
-            String[] routeData = br.readLine().split(" ");
+        // Parse routes
+        int numRoutes = Integer.parseInt(fileScanner.nextLine());
+        map.routes = new Route[numRoutes];
+        for (int i = 0; i < numRoutes; i++) {
+            String[] routeData = fileScanner.nextLine().split(" ");
             String city1 = routeData[0];
             String city2 = routeData[1];
             int time = Integer.parseInt(routeData[2]);
-            map.routes.add(new Route(city1, city2, time));
+            map.routes[i] = new Route(city1, city2, time);
         }
 
-        String[] startEnd = br.readLine().split(" ");
+        // Parse start and end cities
+        String[] startEnd = fileScanner.nextLine().split(" ");
         map.startCity = startEnd[0];
         map.endCity = startEnd[1];
 
-        br.close();
+        fileScanner.close();
         return map;
     }
 
-    public List<String> getCities()
-    {
+    public String[] getCities() {
         return cities;
     }
 
-    public List<Route> getRoutes()
-    {
+    public Route[] getRoutes() {
         return routes;
     }
 
-    public String getStartCity()
-    {
+    public String getStartCity() {
         return startCity;
     }
 
-    public String getEndCity()
-    {
+    public String getEndCity() {
         return endCity;
     }
 }
