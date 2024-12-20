@@ -31,8 +31,20 @@ class WayFinder
         {
             if (currentTime < shortestTime)
             {
+                shortestPath = "";
                 shortestTime = currentTime;
-                shortestPath = String.join(" -> ", visited).trim();
+                for(int i=0; i<visited.length; i++)
+                {
+                    if(visited[i] != null){
+                        if (shortestPath == "")
+                        {
+                            shortestPath = visited[i];
+                        }
+
+                        else
+                            shortestPath = shortestPath + " -> " + visited[i];
+                    }
+                }
             }
         } else
         {
